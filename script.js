@@ -7,6 +7,11 @@ snake[0]={
     y:8 * box
 }
 
+let direction = "right";
+
+
+
+
 function criarBG(){
     context.fillStyle = "lightgreen";
     context.fillRect(0, 0, 16 * box, 16 * box);
@@ -21,6 +26,27 @@ function criarCobrinha(){
 }
 
 
+function iniciarJogo(){
+    criarBG();
+    criarCobrinha(); 
 
-criarBG();
-criarCobrinha();
+    let snakeX = snake[0].x;
+    let snakeY = snake[0].y;
+
+    if(direction == "right") snakeX += box; /*para direita ele decrementa*/
+    if(direction == "left") snakeX -= box; /*para esquerda ele incrementa*/
+    if(direction == "up") snakeY -= box;
+    if(direction == "down") snakeY += box;
+
+    snake.pop(); /* adicionando aqui a função pop, que retira o último elemento do array*/
+    
+    let newHead = {
+        x: snakeX,
+        y: snakeY
+    }
+
+    snake.unshift(newHead);
+}
+
+let jogo = setInterval(iniciarJogo, 100); /* a cada 100 mili segundos ela vai tá iniciando o jogo sem ele travar */
+
