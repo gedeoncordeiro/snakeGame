@@ -7,3 +7,9 @@ body{
     flex-direction: column;
     color: rgb(15, 88, 0);
 }
+
+@media(max-width: 720px){
+    body{
+        margin-top: 100px;
+    }
+}
